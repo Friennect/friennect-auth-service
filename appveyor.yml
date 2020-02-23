@@ -1,0 +1,3 @@
+version: '1.0.{build}'
+test_script:
+  - cmd: echo "This will be printed on the console"
