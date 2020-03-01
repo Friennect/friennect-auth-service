@@ -9,7 +9,8 @@
     "import/prefer-default-export": "off",
     "global-require": "off",
     "radix": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "camelcase": "off"
   },
   "parserOptions": {
     "sourceType": "module"
