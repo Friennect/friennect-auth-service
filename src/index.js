@@ -1,6 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 import configuration from "./config";
+import db from "./db";
+
+const { sequelize } = db;
 
 const configure = (cb) => {
   cb(morgan, express);
@@ -10,8 +13,12 @@ const app = express();
 
 configure(configuration(app));
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, async () => {
   console.log("Express server is running");
+  if (process.env.NODE_ENV !== "test") {
+    const s = await sequelize.sync({});
+    if (s) console.log("Sequelize connected to db");
+  }
 });
 
 // Export app for tests

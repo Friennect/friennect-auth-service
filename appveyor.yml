@@ -1,3 +1,10 @@
 version: '1.0.{build}'
+environment:
+  nodejs_version: "stable"
+install:
+  - ps: Install-Product node $env:nodejs_version
 test_script:
+  - node --version
+  - npm --version
   - cmd: echo "This will be printed on the console"
+build: off
