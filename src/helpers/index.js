@@ -1,3 +1,4 @@
 import Jwt from "./jwt";
+import Keys from "./keys";
 
-export default { Jwt };
+export default { Jwt, Keys };

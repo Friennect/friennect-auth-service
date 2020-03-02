@@ -10,7 +10,9 @@
     "global-require": "off",
     "radix": "off",
     "no-console": "off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "consistent-return": "off",
+    "no-underscore-dangle": "off"
   },
   "parserOptions": {
     "sourceType": "module"
