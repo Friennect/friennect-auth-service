@@ -42,7 +42,7 @@ export default {
       underscored: true
     },
     sync: {
-      force: false
+      force: true
     }
   }
 };

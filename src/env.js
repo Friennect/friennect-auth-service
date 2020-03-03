@@ -32,5 +32,5 @@ export default {
     production: process.env.PORT || 80,
     test: process.env.TEST_PORT || 9000
   },
-  jwt_secret: process.env.jwt_secret
+  jwt_secret: process.env.JWT_SECRET
 };

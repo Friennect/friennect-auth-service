@@ -1,4 +1,11 @@
 version: '1.0.{build}'
+services:
+  - postgresql
+before_test:
+  - cmd: SET PGUSER=postgres
+  - cmd: SET PGPASSWORD=Password12!
+  - cmd: psql -h 127.0.0.1 -p 5432 -c "DROP DATABASE IF EXISTS appveyor;" -U postgres
+  - cmd: psql -h 127.0.0.1 -p 5432 -c "CREATE DATABASE appveyor;" -U postgres
 environment:
   nodejs_version: "stable"
 install:
@@ -6,5 +13,7 @@ install:
 test_script:
   - node --version
   - npm --version
+  - cmd: copy .env.appveyor .env
   - cmd: echo "This will be printed on the console"
+  - cmd: npm run test:windows
 build: off

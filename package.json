@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha ./src/test/*.test.js --require @babel/register --require @babel/polyfill -R spec --timeout 30000 --exit"
+    "test": "nyc mocha ./src/test/*.test.js --require @babel/register --require @babel/polyfill -R spec --timeout 30000 --exit",
+    "build": "babel src -d build",
+    "start:local": "nodemon --exec babel-node src/index",
+    "clean:windows": "if exist ./build rmdir /s/q ./build",
+    "clean:unix": "if -d ./build; then rm -rf build; fi",
+    "test:windows": "set NODE_ENV=test&& npm test",
+    "test:unix": "export NODE_ENV=test && npm test",
+    "build:windows": "npm run clean:windows && npm run build",
+    "build:unix": "npm run clean:unix && npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,6 +26,7 @@
   },
   "homepage": "https://github.com/Friennect/friennect-auth-service#readme",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
     "bcryptjs": "^2.4.3",
     "cloud-config-client": "^1.5.0",
     "eureka-js-client": "^4.5.0",
@@ -38,7 +47,6 @@
     "@babel/register": "^7.8.3",
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.9",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
