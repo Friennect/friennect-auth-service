@@ -1,5 +1,5 @@
 export default class Keys {
   static arePresent(body, ...keys) {
-    return keys.every((key) => Object.keys(body).some((bodyKey) => bodyKey === key));
+    return Object.keys(body).every((bodyKey) => keys.some((mainKey) => bodyKey === mainKey));
   }
 }
