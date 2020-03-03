@@ -14,6 +14,4 @@ before_script:
   - psql -h 127.0.0.1 -p 5432 -c "DROP DATABASE IF EXISTS travis;" -U postgres
   - psql -h 127.0.0.1 -p 5432 -c "CREATE DATABASE travis;" -U postgres
 script:
-  - npm run test:unix # Script doesn't exist yet
-after_success:
-  - npm run coverage
+  - npm run test:unix
