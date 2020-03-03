@@ -35,8 +35,8 @@ export default {
     database: test.name,
     host: test.host,
     port: test.port,
-    username: production.username,
-    password: production.password,
+    username: test.username,
+    password: test.password,
     dialect: "postgres",
     define: {
       underscored: true
