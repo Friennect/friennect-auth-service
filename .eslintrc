@@ -1,0 +1,25 @@
+{
+  "extends": ["airbnb-base"],
+  "parser": "babel-eslint",
+  "rules": {
+    "comma-dangle": "off",
+    "quotes": "off",
+    "linebreak-style": "off",
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "global-require": "off",
+    "radix": "off",
+    "no-console": "off",
+    "camelcase": "off",
+    "consistent-return": "off",
+    "no-underscore-dangle": "off"
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "mocha": true,
+    "es6": true
+  }
+}
