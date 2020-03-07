@@ -20,4 +20,16 @@ router.post(
   AuthController.signIn
 );
 
+router.patch(
+  "/update",
+  AuthMiddleware.checkToken,
+  AuthController.update
+);
+
+router.get(
+  "/logged",
+  AuthMiddleware.checkToken,
+  AuthController.getAuthenticatedUser
+);
+
 export default router;

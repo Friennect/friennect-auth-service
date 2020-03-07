@@ -72,6 +72,31 @@ describe("TESTS", () => {
         });
     });
   });
+  describe("PATCH", () => {
+    it("should update a user detail", (done) => {
+      request(app)
+        .patch(`${root}/update`)
+        .set("Authorization", `Bearer ${token}`)
+        .send({ password })
+        .end((err, res) => {
+          expect(res.status).to.eql(200);
+          done(err);
+        });
+    });
+  });
+  describe("GET", () => {
+    it("should get logged in user", (done) => {
+      request(app)
+        .get(`${root}/logged`)
+        .set("Authorization", `Bearer ${token}`)
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body.body]);
+          expect(status).to.be.eql(200);
+          done(err);
+        });
+    });
+  });
   after((done) => {
     Auth.destroy({ where: { email } }).then(() => {
       done();
