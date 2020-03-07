@@ -14,4 +14,10 @@ router.post(
   AuthController.signUp
 );
 
+router.post(
+  "/login",
+  AuthMiddleware.checkKeysPresent,
+  AuthController.signIn
+);
+
 export default router;
