@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha ./src/test/*.test.js --require @babel/register --require @babel/polyfill -R spec --timeout 30000 --exit",
+    "test": "nyc mocha ./src/test/*.test.js --require @babel/register --require @babel/polyfill -R spec --timeout 60000 --exit",
     "build": "babel src -d build",
     "start:local": "nodemon --exec babel-node src/index",
     "clean:windows": "if exist ./build rmdir /s/q ./build",
