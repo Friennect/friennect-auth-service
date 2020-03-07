@@ -57,4 +57,47 @@ export default class AuthController {
       });
     }
   }
+
+  static async update(req, res) {
+    try {
+      const { _user, body } = req;
+      const update = await Auth.update(body, {
+        individualHooks: true,
+        where: {
+          id: _user.id
+        }
+      });
+      if (!update) {
+        throw new Error("Unable to update");
+      }
+      res.status(200).json({
+        statusCode: 200,
+        body: "Successfully updated user detail"
+      });
+    } catch (error) {
+      res.status(500).json({
+        statusCode: 500,
+        body: error
+      });
+    }
+  }
+
+  static async getAuthenticatedUser(req, res) {
+    try {
+      const { _user } = req;
+      const body = {
+        id: _user.id,
+        email: _user.email
+      };
+      res.status(200).json({
+        statusCode: 200,
+        body
+      });
+    } catch (error) {
+      res.status(500).json({
+        statusCode: 500,
+        body: error
+      });
+    }
+  }
 }
