@@ -96,6 +96,17 @@ describe("TESTS", () => {
           done(err);
         });
     });
+    it("should log user out", (done) => {
+      request(app)
+        .get(`${root}/logout`)
+        .set("Authorization", `Bearer ${token}`)
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body.body]);
+          expect(status).to.be.eql(200);
+          done(err);
+        });
+    });
   });
   after((done) => {
     Auth.destroy({ where: { email } }).then(() => {

@@ -1,7 +1,7 @@
 import db from "../db";
 import helpers from "../helpers";
 
-const { Auth } = db;
+const { Auth, Token } = db;
 const { Jwt, Crypt } = helpers;
 
 export default class AuthController {
@@ -92,6 +92,26 @@ export default class AuthController {
       res.status(200).json({
         statusCode: 200,
         body
+      });
+    } catch (error) {
+      res.status(500).json({
+        statusCode: 500,
+        body: error
+      });
+    }
+  }
+
+  static async logOut(req, res) {
+    try {
+      const { _user, _token } = req;
+      const actual = _token;
+      const loggedOut = await Token.create({ actual });
+      if (!loggedOut) {
+        throw new Error("Cannot sign user out");
+      }
+      res.status(200).json({
+        statusCode: 200,
+        body: `Successfully signed out user with email ${_user.email}`
       });
     } catch (error) {
       res.status(500).json({

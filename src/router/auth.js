@@ -32,4 +32,10 @@ router.get(
   AuthController.getAuthenticatedUser
 );
 
+router.get(
+  "/logout",
+  AuthMiddleware.checkToken,
+  AuthController.logOut
+);
+
 export default router;
