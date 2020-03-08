@@ -15,7 +15,7 @@
     "build:unix": "npm run clean:unix && npm run build",
     "build:start:windows": "set NODE_ENV=development&& npm run build:windows && nodemon build/index",
     "build:start:unix": "export NODE_ENV=development && npm run build:unix && nodemon build/index",
-    "demo:prod": "node build/index"
+    "demo:prod": "export NODE_ENV=production && node build/index"
   },
   "repository": {
     "type": "git",
